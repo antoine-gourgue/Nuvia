@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL || 'postgresql://nuvia:nuvia@localhost:5432/nuvia',
+    jwtSecret: process.env.JWT_SECRET || 'dev-secret-change-in-production',
   },
 
   eslint: {

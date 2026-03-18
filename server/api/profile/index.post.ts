@@ -2,7 +2,7 @@ import { createUserProfileSchema } from '../../../shared/schemas'
 import { userService } from '../../services/userService'
 
 export default defineEventHandler(async (event) => {
-  const userId = requireUserId(event)
+  const userId = await requireUserId(event)
   const body = await readValidatedBody(event, createUserProfileSchema.parse)
 
   const profile = await userService.createProfile(userId, body)

@@ -1,7 +1,7 @@
 import { weightService } from '../../services/weightService'
 
 export default defineEventHandler(async (event) => {
-  requireUserId(event)
+  await requireUserId(event)
   const id = getRouterParam(event, 'id')
   if (!id) throw createError({ statusCode: 400, statusMessage: 'Missing weight entry ID' })
 

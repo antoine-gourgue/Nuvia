@@ -2,7 +2,7 @@ import { updateMealSchema } from '../../../shared/schemas'
 import { mealService } from '../../services/mealService'
 
 export default defineEventHandler(async (event) => {
-  requireUserId(event)
+  await requireUserId(event)
   const id = getRouterParam(event, 'id')
   if (!id) throw createError({ statusCode: 400, statusMessage: 'Missing meal ID' })
 
