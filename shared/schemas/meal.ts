@@ -12,3 +12,7 @@ export const createMealSchema = z.object({
 })
 
 export type CreateMealPayload = z.infer<typeof createMealSchema>
+
+export const updateMealSchema = createMealSchema.partial()
+
+export type UpdateMealPayload = z.infer<typeof updateMealSchema>
