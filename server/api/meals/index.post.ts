@@ -2,7 +2,7 @@ import { createMealSchema } from '../../../shared/schemas'
 import { mealService } from '../../services/mealService'
 
 export default defineEventHandler(async (event) => {
-  const userId = requireUserId(event)
+  const userId = await requireUserId(event)
   const body = await readValidatedBody(event, createMealSchema.parse)
 
   const meal = await mealService.createMeal(userId, body)

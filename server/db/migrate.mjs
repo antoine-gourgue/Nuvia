@@ -24,9 +24,7 @@ async function migrate() {
   `
 
   const migrationsDir = join(__dirname, 'migrations')
-  const files = (await readdir(migrationsDir))
-    .filter((f) => f.endsWith('.sql'))
-    .sort()
+  const files = (await readdir(migrationsDir)).filter((f) => f.endsWith('.sql')).sort()
 
   const applied = await sql`SELECT name FROM _migrations ORDER BY name`
   const appliedNames = new Set(applied.map((r) => r.name))

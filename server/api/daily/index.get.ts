@@ -3,7 +3,7 @@ import { userService } from '../../services/userService'
 import { DEFAULT_CALORIE_TARGET } from '../../../shared/constants'
 
 export default defineEventHandler(async (event) => {
-  const userId = requireUserId(event)
+  const userId = await requireUserId(event)
   const query = getQuery(event)
   const date = typeof query.date === 'string' ? query.date : new Date().toISOString().slice(0, 10)
 
