@@ -183,3 +183,59 @@ Avoid:
 - many unrelated fixes in one feature commit
 - committing unfinished broken code as complete work
 - skipping tests for important logic changes
+
+---
+
+## 9. Release Versioning
+
+This project uses Semantic Versioning (SemVer).
+
+### Version format
+
+`MAJOR.MINOR.PATCH`
+
+- **major**: structuring change or public milestone (e.g. `1.0.0` = stable MVP)
+- **minor**: new feature without breaking existing functionality
+- **patch**: bug fix, stabilization, small adjustment
+
+### Pre-1.0 rules
+
+While the product is not stable, all versions stay in `0.x.x`.
+Move to `1.0.0` only when the MVP is cohesive, testable, and presentable.
+
+### Tagging
+
+Each version milestone must have an annotated Git tag:
+
+```
+git tag -a v0.5.0 <commit> -m "v0.5.0 — Dashboard & Journal"
+```
+
+### Version readiness checklist
+
+A version is ready only if:
+
+- the planned scope is delivered
+- lint passes
+- typecheck passes
+- tests pass
+- the build works
+- the UX is coherent
+- `CHANGELOG.md` is updated
+- `package.json` version is updated
+
+### CHANGELOG
+
+Maintain `CHANGELOG.md` at the root with:
+
+- version number and date
+- sections: Added, Improved, Fixed, Technical, Migration notes
+
+### Claude behavior on versioning
+
+When a major phase is complete, Claude should:
+
+1. identify if it matches a version milestone
+2. propose the next logical version number
+3. summarize what enters the release
+4. flag if the version is still incomplete
