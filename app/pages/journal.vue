@@ -2,6 +2,15 @@
   <div class="mx-auto w-full max-w-2xl space-y-6 px-4 py-8">
     <JournalJournalSkeleton v-if="journalStore.status === 'loading'" />
 
+    <div v-else-if="journalStore.status === 'error'" class="py-12 text-center">
+      <p class="text-sm font-medium text-red-600">
+        {{ journalStore.errorMessage || 'Failed to load journal.' }}
+      </p>
+      <UiUButton variant="secondary" class="mt-4" @click="journalStore.fetchEntries()">
+        Try again
+      </UiUButton>
+    </div>
+
     <template v-else>
       <div class="flex items-center justify-between">
         <div>
@@ -10,6 +19,7 @@
         </div>
         <input
           type="date"
+          aria-label="Select date"
           :value="journalStore.selectedDate"
           class="rounded-lg border border-surface-200 bg-white px-3 py-2 text-sm text-surface-700"
           @input="onDateChange"
@@ -26,13 +36,6 @@
         />
       </div>
     </template>
-
-    <div v-if="journalStore.status === 'error'" class="py-12 text-center">
-      <p class="text-surface-500">{{ journalStore.errorMessage }}</p>
-      <UiUButton variant="secondary" class="mt-4" @click="journalStore.fetchEntries()">
-        Try again
-      </UiUButton>
-    </div>
   </div>
 </template>
 

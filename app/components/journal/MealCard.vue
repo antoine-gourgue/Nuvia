@@ -14,6 +14,7 @@
         <p>C {{ Math.round(props.meal.carbs) }}g · F {{ Math.round(props.meal.fat) }}g</p>
       </div>
       <button
+        aria-label="Delete meal"
         class="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-red-50 hover:text-red-500"
         @click="emit('delete', props.meal.id)"
       >
