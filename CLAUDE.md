@@ -9,6 +9,7 @@ Claude must always follow the rules defined here and in `docs/ai/`.
 # 1. Rule Priority
 
 Claude must follow rules in this order of priority:
+
 1. `CLAUDE.md`
 2. files inside `docs/ai/`
 3. existing project architecture and conventions
@@ -21,6 +22,7 @@ If a generated solution conflicts with these rules, Claude must follow the proje
 # 2. Global Engineering Rules
 
 ## Mandatory stack
+
 - Nuxt 4
 - TypeScript strict
 - Tailwind CSS
@@ -31,6 +33,7 @@ If a generated solution conflicts with these rules, Claude must follow the proje
 - Shared contracts between frontend and backend
 
 ## Hard requirements
+
 - Never use `any`
 - Never write approximate code
 - Never ignore loading / empty / error states
@@ -42,6 +45,7 @@ If a generated solution conflicts with these rules, Claude must follow the proje
 - Never leave public functions weakly typed
 
 ## Project philosophy
+
 - Prefer simple, maintainable solutions
 - Keep code production-ready
 - Keep code explicit and readable
@@ -52,6 +56,7 @@ If a generated solution conflicts with these rules, Claude must follow the proje
 - Favor consistency over cleverness
 
 ## Language and naming
+
 - Use English for:
   - code
   - identifiers
@@ -63,11 +68,13 @@ If a generated solution conflicts with these rules, Claude must follow the proje
 - Prefer explicit names over abbreviations
 
 Good:
+
 ```ts
 const remainingCalories = computed(() => targetCalories.value - consumedCalories.value)
 ```
 
 Bad:
+
 ```ts
 const rc = computed(() => t.value - c.value)
 ```
@@ -77,6 +84,7 @@ const rc = computed(() => t.value - c.value)
 # 3. Architecture Rules
 
 ## Separation of concerns
+
 - Pages orchestrate screens, they do not own core business logic
 - Components render UI and emit events
 - Composables encapsulate reusable client logic
@@ -87,6 +95,7 @@ const rc = computed(() => t.value - c.value)
 - Shared types and schemas live in shared folders
 
 ## Expected structure
+
 - `components/ui`: generic reusable UI
 - `components/navigation`: app shell and navigation
 - `components/onboarding`: onboarding screens
@@ -102,11 +111,13 @@ const rc = computed(() => t.value - c.value)
 - `shared/constants`: shared constants
 
 Good:
+
 - meal creation validation in shared schema
 - handler calls service
 - service calls repository
 
 Bad:
+
 - page directly fetches SQL result
 - handler writes SQL inline
 - component computes all nutrition logic itself
@@ -116,6 +127,7 @@ Bad:
 # 4. TypeScript Rules
 
 ## Mandatory rules
+
 - `strict: true`
 - no `any`
 - prefer `unknown` when input shape is not yet validated
@@ -126,7 +138,9 @@ Bad:
 - type all composable return values if inference is unclear
 
 ## `type` vs `interface`
+
 Use `type` for:
+
 - unions
 - intersections
 - tuples
@@ -136,11 +150,13 @@ Use `type` for:
 - finite states
 
 Use `interface` for:
+
 - extensible object contracts
 - domain entities that may be extended
 - implementation-oriented object contracts
 
 Good:
+
 ```ts
 export interface UserProfile {
   id: string
@@ -152,12 +168,11 @@ export interface UserProfile {
 
 export type GoalType = 'lose' | 'maintain' | 'gain'
 
-export type ApiResult<T> =
-  | { success: true; data: T }
-  | { success: false; error: string }
+export type ApiResult<T> = { success: true; data: T } | { success: false; error: string }
 ```
 
 Bad:
+
 ```ts
 export type UserProfile = any
 
@@ -173,7 +188,9 @@ export type ApiResult = {
 ```
 
 ## Public function typing
+
 Good:
+
 ```ts
 export function calculateRemainingCalories(target: number, consumed: number): number {
   return Math.max(target - consumed, 0)
@@ -181,6 +198,7 @@ export function calculateRemainingCalories(target: number, consumed: number): nu
 ```
 
 Bad:
+
 ```ts
 export function calculateRemainingCalories(target, consumed) {
   return target - consumed
@@ -192,6 +210,7 @@ export function calculateRemainingCalories(target, consumed) {
 # 5. Nuxt Rules
 
 ## Frontend
+
 - Use Composition API
 - Use `<script setup lang="ts">`
 - Keep pages thin
@@ -201,6 +220,7 @@ export function calculateRemainingCalories(target, consumed) {
 - Avoid direct browser-only APIs without guards
 
 Good:
+
 ```ts
 const { meals, isLoading, fetchMeals } = useJournalMeals()
 
@@ -210,6 +230,7 @@ onMounted(() => {
 ```
 
 Bad:
+
 ```ts
 onMounted(async () => {
   const response = await $fetch('/api/meals')
@@ -218,6 +239,7 @@ onMounted(async () => {
 ```
 
 Recommended:
+
 ```ts
 const response = await $fetch<ApiResult<MealEntry[]>>('/api/meals')
 
@@ -227,12 +249,14 @@ if (response.success) {
 ```
 
 ## Server routes
+
 - Validate input at the boundary
 - Keep handlers thin
 - Delegate to service layer
 - Use consistent response shapes
 
 Good:
+
 ```ts
 export default defineEventHandler(async (event) => {
   const body = await readValidatedBody(event, createMealSchema.parse)
@@ -246,6 +270,7 @@ export default defineEventHandler(async (event) => {
 ```
 
 Bad:
+
 ```ts
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -259,7 +284,9 @@ export default defineEventHandler(async (event) => {
 # 6. UI / UX Rules
 
 ## Product feeling
+
 The product must feel:
+
 - premium
 - simple
 - motivating
@@ -269,6 +296,7 @@ The product must feel:
 - consistent on desktop
 
 ## UI rules
+
 - one clear primary action per screen
 - visible hierarchy
 - consistent spacing
@@ -277,6 +305,7 @@ The product must feel:
 - meaningful feedback
 
 ## Component philosophy
+
 - shadcn-like composability
 - clean base primitives
 - reusable variants
@@ -284,7 +313,9 @@ The product must feel:
 - subtle motion only
 
 ## Mandatory states
+
 Every significant feature must define:
+
 - loading state
 - empty state
 - error state
@@ -292,15 +323,19 @@ Every significant feature must define:
 - disabled state when relevant
 
 Good:
+
 - dashboard card with skeleton state
 - empty journal screen with CTA to add first meal
 
 Bad:
+
 - blank white screen while data loads
 - error only visible in console
 
 ## UI state rule
+
 For every important async screen or action, Claude must explicitly define:
+
 - loading state
 - empty state
 - error state
@@ -314,6 +349,7 @@ Do not leave async UX undefined.
 # 7. Testing Rules
 
 ## Required tests
+
 - nutrition helpers
 - stores
 - composables
@@ -323,6 +359,7 @@ Do not leave async UX undefined.
 - regression tests for fixed bugs
 
 Good:
+
 ```ts
 it('calculates remaining calories correctly', () => {
   expect(calculateRemainingCalories(2200, 1850)).toBe(350)
@@ -330,6 +367,7 @@ it('calculates remaining calories correctly', () => {
 ```
 
 Bad:
+
 ```ts
 it('works', () => {
   expect(true).toBe(true)
@@ -337,6 +375,7 @@ it('works', () => {
 ```
 
 ## Test principles
+
 - deterministic
 - readable
 - isolated
@@ -348,6 +387,7 @@ it('works', () => {
 # 8. Git Workflow Rules
 
 ## Branches
+
 - `feature/<name>`
 - `fix/<name>`
 - `refactor/<name>`
@@ -357,26 +397,31 @@ it('works', () => {
 - `ci/<name>`
 
 Good:
+
 - `feature/onboarding-goal-step`
 - `fix/daily-calories-rounding`
 - `chore/docker-local-setup`
 
 Bad:
+
 - `test`
 - `antoine`
 - `update`
 - `stuff`
 
 ## Commits
+
 Use Conventional Commits.
 
 Good:
+
 - `feat: add onboarding goal selection step`
 - `fix: correct remaining calories calculation`
 - `refactor: extract daily target composable`
 - `test: add regression tests for meal totals`
 
 Bad:
+
 - `update`
 - `fix bug`
 - `wip`
@@ -387,6 +432,7 @@ Bad:
 # 9. Dependency Rule
 
 Before introducing a new dependency, prefer:
+
 - native Nuxt features
 - Vue composables
 - existing project utilities
@@ -399,6 +445,7 @@ Do not add a package if the same result can be achieved simply with existing too
 # 10. Database Change Rule
 
 Any database schema change must include:
+
 - a migration
 - updated shared types if needed
 - repository updates
@@ -411,6 +458,7 @@ Do not change persistence structure implicitly in unrelated files.
 # 11. Delivery Rules
 
 When asked for a feature:
+
 1. briefly explain the chosen approach
 2. list files to create or modify
 3. provide complete code
@@ -418,6 +466,7 @@ When asked for a feature:
 5. mention edge cases or trade-offs if relevant
 
 When writing code:
+
 - prefer maintainability
 - prefer explicitness
 - keep files cohesive
@@ -425,7 +474,9 @@ When writing code:
 - never skip validation on external input
 
 ## Expected response format
+
 For implementation tasks, Claude should usually answer with:
+
 1. short approach summary
 2. files to create or modify
 3. complete code
@@ -433,7 +484,9 @@ For implementation tasks, Claude should usually answer with:
 5. completed work / branch / commit / test notes if the feature is complete
 
 ## Feature completion rule
+
 When a coherent feature or fix is complete, always end the response with:
+
 - Completed work
 - Suggested branch name
 - Suggested commit message

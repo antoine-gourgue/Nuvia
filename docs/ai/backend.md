@@ -3,6 +3,7 @@
 This project uses Nuxt server routes as the backend layer.
 
 ## 1. Backend Principles
+
 - Handlers must stay thin
 - Validate all external input at the boundary
 - Services contain business logic
@@ -12,7 +13,9 @@ This project uses Nuxt server routes as the backend layer.
 - Never write SQL directly in route handlers
 
 ## 2. Layering Rules
+
 Good:
+
 ```ts
 export default defineEventHandler(async (event) => {
   const body = await readValidatedBody(event, createMealSchema.parse)
@@ -26,6 +29,7 @@ export default defineEventHandler(async (event) => {
 ```
 
 Bad:
+
 ```ts
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -35,7 +39,9 @@ export default defineEventHandler(async (event) => {
 ```
 
 ## 3. Validation
+
 Good:
+
 ```ts
 import { z } from 'zod'
 

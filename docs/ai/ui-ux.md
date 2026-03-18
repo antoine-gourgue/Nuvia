@@ -1,7 +1,9 @@
 # UI / UX Standards
 
 ## 1. Product Feel
+
 The product should feel:
+
 - premium
 - calm
 - modern
@@ -12,7 +14,9 @@ The product should feel:
 - frictionless
 
 ## 2. Onboarding Rules
+
 Recommended steps:
+
 1. welcome
 2. goal
 3. age / height / weight

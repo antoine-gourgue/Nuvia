@@ -1,6 +1,7 @@
 # DevOps Standards
 
 ## 1. Core Principles
+
 - local setup must be simple
 - dev and prod concerns must be separated
 - configuration must be explicit
@@ -8,6 +9,7 @@
 - CI must block broken code
 
 ## 2. Example Dockerfile Pattern
+
 ```dockerfile
 FROM node:22-alpine AS base
 WORKDIR /app

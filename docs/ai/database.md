@@ -3,6 +3,7 @@
 This project uses PostgreSQL.
 
 ## 1. Core Rules
+
 - Use explicit table names
 - Use primary keys
 - Use foreign keys
@@ -12,6 +13,7 @@ This project uses PostgreSQL.
 - Use migrations
 
 ## 2. Example Table Shape
+
 ```sql
 CREATE TABLE meal_entries (
   id UUID PRIMARY KEY,
