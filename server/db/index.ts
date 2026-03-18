@@ -1,5 +1,15 @@
-// Database connection will be configured here.
-// PostgreSQL client setup (e.g. with postgres.js or pg) will be added
-// when the first feature requiring persistence is implemented.
+import postgres from 'postgres'
 
-export {}
+let sql: postgres.Sql | null = null
+
+export function useDatabase(): postgres.Sql {
+  if (!sql) {
+    const config = useRuntimeConfig()
+    sql = postgres(config.databaseUrl, {
+      max: 10,
+      idle_timeout: 20,
+      connect_timeout: 10,
+    })
+  }
+  return sql
+}
