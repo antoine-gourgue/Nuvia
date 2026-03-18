@@ -1,9 +1,6 @@
 <template>
   <div
-    :class="[
-      'animate-pulse rounded-lg bg-surface-200',
-      props.rounded ? 'rounded-full' : 'rounded-lg',
-    ]"
+    :class="['animate-pulse bg-surface-200', props.rounded ? 'rounded-full' : 'rounded-xl']"
     :style="{ width: props.width, height: props.height }"
   />
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[props.orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px', 'bg-surface-100']"
+    :class="[props.orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px', 'bg-border-soft']"
   />
 </template>
 
