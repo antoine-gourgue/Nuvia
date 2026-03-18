@@ -6,6 +6,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ---
 
+## [0.9.0] — 2026-03-18
+
+### Changed
+
+- Complete CSS theme rewrite with botanical color palette (warm neutrals, botanical greens, coral/lime/peach accents)
+- All UI primitives refactored to use semantic design tokens
+- `UCard`: added `variant` prop (default, soft, featured)
+- `UButton`: added `soft` variant, updated to botanical palette
+- `UInput`: added `helper` prop, increased height to h-11, rounded-xl
+- `UBadge`: added coral, lime, peach variants with border styling
+- `UProgress`: added coral, lime colors, thinner default bar
+- `UDialog`: updated to use surface-card and text-strong backdrop
+- `UDivider`: uses border-soft token
+- `USkeleton`: rounded-xl default, uses surface-200
+- App layout uses warm `bg-background` base
+
+### Added
+
+- `UPageHeader` — reusable page header with title, subtitle and optional action slot
+- `UMetricCard` — metric display with label, value, unit and optional trend badge
+- `UEmptyState` — empty state with icon, message and CTA slot
+- `USectionHeader` — section title with optional action slot
+- Semantic color tokens: background, surface-soft, surface-card, text-strong, text-default, text-secondary, text-muted, border-soft
+- State color tokens: success, warning, error, info with bg/text/border variants
+- Accent color scales: coral, lime, peach (50–900)
+
+### Technical
+
+- Tailwind CSS 4 @theme block with 60+ custom design tokens
+- Surface scale remapped to warm neutrals for backward compatibility
+
+---
+
 ## [0.7.0] — 2026-03-18
 
 ### Added
