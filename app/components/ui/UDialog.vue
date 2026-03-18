@@ -9,7 +9,7 @@
       leave-to-class="opacity-0"
     >
       <div v-if="props.open" class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="fixed inset-0 bg-black/40" @click="emit('close')" />
+        <div class="fixed inset-0 bg-text-strong/30" @click="emit('close')" />
         <Transition
           enter-active-class="duration-200 ease-out"
           enter-from-class="scale-95 opacity-0"
@@ -23,7 +23,7 @@
             role="dialog"
             aria-modal="true"
             :class="[
-              'relative z-10 w-full rounded-2xl bg-white p-6 shadow-xl',
+              'relative z-10 w-full rounded-2xl bg-surface-card p-6 shadow-xl',
               sizeClasses[props.size],
             ]"
           >

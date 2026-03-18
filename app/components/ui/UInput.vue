@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-1.5">
-    <label v-if="props.label" :for="inputId" class="text-sm font-medium text-surface-700">
+    <label v-if="props.label" :for="inputId" class="text-sm font-medium text-text-default">
       {{ props.label }}
     </label>
     <input
@@ -10,17 +10,20 @@
       :placeholder="props.placeholder"
       :disabled="props.disabled"
       :class="[
-        'h-10 w-full rounded-lg border bg-white px-3 text-sm text-surface-900 transition-colors duration-150',
-        'placeholder:text-surface-400',
+        'h-11 w-full rounded-xl border bg-surface-card px-3.5 text-sm text-text-strong transition-all duration-150',
+        'placeholder:text-text-muted',
         'focus:outline-none focus:ring-2 focus:ring-offset-1',
         'disabled:cursor-not-allowed disabled:opacity-50',
         props.error
-          ? 'border-red-400 focus:ring-red-500'
-          : 'border-surface-200 focus:ring-primary-500',
+          ? 'border-error-border focus:ring-red-400'
+          : 'border-border-soft focus:ring-primary-400',
       ]"
       @input="handleInput"
     />
-    <p v-if="props.error" class="text-xs text-red-600">
+    <p v-if="props.helper && !props.error" class="text-xs text-text-muted">
+      {{ props.helper }}
+    </p>
+    <p v-if="props.error" class="text-xs text-error-text">
       {{ props.error }}
     </p>
   </div>
@@ -33,6 +36,7 @@ interface Props {
   placeholder?: string
   type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'search' | 'date'
   error?: string
+  helper?: string
   disabled?: boolean
   id?: string
 }
@@ -43,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: undefined,
   type: 'text',
   error: undefined,
+  helper: undefined,
   disabled: false,
   id: undefined,
 })
