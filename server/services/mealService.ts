@@ -1,7 +1,7 @@
-import type { MealEntry, DailySummary } from '../../shared/types'
-import type { CreateMealPayload, UpdateMealPayload } from '../../shared/schemas'
+import type { MealEntry, DailySummary } from '#shared/types'
+import type { CreateMealPayload, UpdateMealPayload } from '#shared/schemas'
 import { mealRepository } from '../repositories/mealRepository'
-import { calculateTotalMacros, calculateRemainingCalories } from '../../shared/utils/nutrition'
+import { calculateTotalMacros, calculateRemainingCalories } from '#shared/utils/nutrition'
 
 export const mealService = {
   async getMealsByDate(userId: string, date: string): Promise<MealEntry[]> {

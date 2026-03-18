@@ -1,6 +1,6 @@
 import { mealService } from '../../services/mealService'
 import { userService } from '../../services/userService'
-import { DEFAULT_CALORIE_TARGET } from '../../../shared/constants'
+import { DEFAULT_CALORIE_TARGET } from '#shared/constants'
 
 export default defineEventHandler(async (event) => {
   const userId = await requireUserId(event)

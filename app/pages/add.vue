@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MealType } from '../../shared/types'
+import type { MealType } from '#shared/types'
 
 definePageMeta({
   layout: 'app',

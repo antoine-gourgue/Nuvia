@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { TrendingDown, Minus, TrendingUp } from 'lucide-vue-next'
-import type { GoalType } from '../../../shared/types'
+import type { GoalType } from '#shared/types'
 
 const onboardingStore = useOnboardingStore()
 

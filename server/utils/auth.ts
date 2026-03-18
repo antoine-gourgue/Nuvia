@@ -1,6 +1,6 @@
 import type { H3Event } from 'h3'
 import { verifyToken } from './jwt'
-import type { AuthTokenPayload } from '../../shared/types'
+import type { AuthTokenPayload } from '#shared/types'
 
 export async function requireAuth(event: H3Event): Promise<AuthTokenPayload> {
   const authHeader = getHeader(event, 'authorization')

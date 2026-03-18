@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import type { MealEntry, MealType, RequestStatus } from '../../shared/types'
-import type { CreateMealPayload } from '../../shared/schemas'
+import type { MealEntry, MealType, RequestStatus } from '#shared/types'
+import type { CreateMealPayload } from '#shared/schemas'
 
 interface JournalState {
   entries: MealEntry[]

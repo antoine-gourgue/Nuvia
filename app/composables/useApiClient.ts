@@ -1,4 +1,4 @@
-import type { ApiResult } from '../../shared/types'
+import type { ApiResult } from '#shared/types'
 
 export function useApiClient() {
   const authStore = useAuthStore()
@@ -17,7 +17,7 @@ export function useApiClient() {
     return response.data
   }
 
-  async function post<T>(url: string, body: unknown): Promise<T> {
+  async function post<T>(url: string, body: Record<string, unknown>): Promise<T> {
     const response = await $fetch<ApiResult<T>>(url, {
       method: 'POST',
       headers: authHeaders(),
@@ -27,7 +27,7 @@ export function useApiClient() {
     return response.data
   }
 
-  async function patch<T>(url: string, body: unknown): Promise<T> {
+  async function patch<T>(url: string, body: Record<string, unknown>): Promise<T> {
     const response = await $fetch<ApiResult<T>>(url, {
       method: 'PATCH',
       headers: authHeaders(),

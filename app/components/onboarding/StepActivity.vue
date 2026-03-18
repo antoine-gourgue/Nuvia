@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ActivityLevel } from '../../../shared/types'
+import type { ActivityLevel } from '#shared/types'
 
 const onboardingStore = useOnboardingStore()
 

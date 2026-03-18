@@ -1,4 +1,4 @@
-import type { User, UserProfile } from '../../shared/types'
+import type { User, UserProfile } from '#shared/types'
 import { useDatabase } from '../db'
 
 interface UserRow {
@@ -56,8 +56,9 @@ export const userRepository = {
     const rows = await sql<UserRow[]>`
       SELECT * FROM users WHERE email = ${email}
     `
-    if (rows.length === 0) return null
-    return { ...toUser(rows[0]), passwordHash: rows[0].password_hash }
+    const row = rows[0]
+    if (!row) return null
+    return { ...toUser(row), passwordHash: row.password_hash }
   },
 
   async findById(id: string): Promise<User | null> {
@@ -65,7 +66,8 @@ export const userRepository = {
     const rows = await sql<UserRow[]>`
       SELECT * FROM users WHERE id = ${id}
     `
-    return rows.length > 0 ? toUser(rows[0]) : null
+    const row = rows[0]
+    return row ? toUser(row) : null
   },
 
   async create(email: string, passwordHash: string): Promise<User> {
@@ -75,7 +77,9 @@ export const userRepository = {
       VALUES (${email}, ${passwordHash})
       RETURNING *
     `
-    return toUser(rows[0])
+    const row = rows[0]
+    if (!row) throw new Error('Failed to create user')
+    return toUser(row)
   },
 
   async findProfileByUserId(userId: string): Promise<UserProfile | null> {
@@ -83,7 +87,8 @@ export const userRepository = {
     const rows = await sql<ProfileRow[]>`
       SELECT * FROM user_profiles WHERE user_id = ${userId}
     `
-    return rows.length > 0 ? toUserProfile(rows[0]) : null
+    const row = rows[0]
+    return row ? toUserProfile(row) : null
   },
 
   async createProfile(
@@ -105,7 +110,9 @@ export const userRepository = {
       VALUES (${userId}, ${data.biologicalSex}, ${data.age}, ${data.heightCm}, ${data.weightKg}, ${data.targetWeightKg}, ${data.goalType}, ${data.activityLevel}, ${data.dailyCalorieTarget})
       RETURNING *
     `
-    return toUserProfile(rows[0])
+    const row = rows[0]
+    if (!row) throw new Error('Failed to create profile')
+    return toUserProfile(row)
   },
 
   async updateProfile(
@@ -136,6 +143,7 @@ export const userRepository = {
       WHERE user_id = ${userId}
       RETURNING *
     `
-    return rows.length > 0 ? toUserProfile(rows[0]) : null
+    const row = rows[0]
+    return row ? toUserProfile(row) : null
   },
 }

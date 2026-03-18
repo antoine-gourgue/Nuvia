@@ -1,4 +1,4 @@
-import type { MealEntry } from '../../shared/types'
+import type { MealEntry } from '#shared/types'
 import { useDatabase } from '../db'
 
 interface MealRow {
@@ -49,7 +49,8 @@ export const mealRepository = {
     const rows = await sql<MealRow[]>`
       SELECT * FROM meal_entries WHERE id = ${id}
     `
-    return rows.length > 0 ? toMealEntry(rows[0]) : null
+    const row = rows[0]
+    return row ? toMealEntry(row) : null
   },
 
   async create(
@@ -71,7 +72,9 @@ export const mealRepository = {
       VALUES (${userId}, ${data.name}, ${data.mealType}, ${data.calories}, ${data.protein}, ${data.carbs}, ${data.fat}, ${data.servingGrams}, ${data.entryDate})
       RETURNING *
     `
-    return toMealEntry(rows[0])
+    const row = rows[0]
+    if (!row) throw new Error('Failed to create meal entry')
+    return toMealEntry(row)
   },
 
   async update(
@@ -102,7 +105,8 @@ export const mealRepository = {
       WHERE id = ${id}
       RETURNING *
     `
-    return rows.length > 0 ? toMealEntry(rows[0]) : null
+    const row = rows[0]
+    return row ? toMealEntry(row) : null
   },
 
   async delete(id: string): Promise<boolean> {

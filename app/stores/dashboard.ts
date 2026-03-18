@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { DailySummary, RequestStatus } from '../../shared/types'
+import type { DailySummary, RequestStatus } from '#shared/types'
 
 interface DashboardState {
   summary: DailySummary | null

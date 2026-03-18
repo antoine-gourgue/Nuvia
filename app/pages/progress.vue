@@ -8,11 +8,11 @@
     <!-- Loading -->
     <div v-if="weightStore.status === 'loading'" class="space-y-4">
       <div class="grid grid-cols-3 gap-3">
-        <UiUSkeleton v-for="i in 3" :key="i" height="72px" rounded="xl" />
+        <UiUSkeleton v-for="i in 3" :key="i" height="72px" />
       </div>
-      <UiUSkeleton height="220px" rounded="xl" />
-      <UiUSkeleton height="180px" rounded="xl" />
-      <UiUSkeleton height="200px" rounded="xl" />
+      <UiUSkeleton height="220px" />
+      <UiUSkeleton height="180px" />
+      <UiUSkeleton height="200px" />
     </div>
 
     <!-- Error -->

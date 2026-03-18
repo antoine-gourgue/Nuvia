@@ -1,4 +1,4 @@
-import type { WeightEntry } from '../../shared/types'
+import type { WeightEntry } from '#shared/types'
 import { useDatabase } from '../db'
 
 interface WeightRow {
@@ -39,7 +39,8 @@ export const weightRepository = {
       SELECT * FROM weight_entries
       WHERE user_id = ${userId} AND entry_date = ${date}
     `
-    return rows.length > 0 ? toWeightEntry(rows[0]) : null
+    const row = rows[0]
+    return row ? toWeightEntry(row) : null
   },
 
   async create(
@@ -54,7 +55,9 @@ export const weightRepository = {
       DO UPDATE SET weight_kg = ${data.weightKg}, note = ${data.note ?? null}
       RETURNING *
     `
-    return toWeightEntry(rows[0])
+    const row = rows[0]
+    if (!row) throw new Error('Failed to create weight entry')
+    return toWeightEntry(row)
   },
 
   async delete(id: string): Promise<boolean> {

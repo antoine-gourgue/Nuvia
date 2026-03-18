@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { Trash2 } from 'lucide-vue-next'
-import type { MealEntry } from '../../../shared/types'
+import type { MealEntry } from '#shared/types'
 
 interface Props {
   meal: MealEntry

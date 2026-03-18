@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BiologicalSex } from '../../../shared/types'
+import type { BiologicalSex } from '#shared/types'
 
 const onboardingStore = useOnboardingStore()
 

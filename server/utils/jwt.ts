@@ -1,5 +1,5 @@
 import { SignJWT, jwtVerify } from 'jose'
-import type { AuthTokenPayload } from '../../shared/types'
+import type { AuthTokenPayload } from '#shared/types'
 
 function getSecret(): Uint8Array {
   const config = useRuntimeConfig()

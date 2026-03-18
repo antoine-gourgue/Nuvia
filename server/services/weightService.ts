@@ -1,5 +1,5 @@
-import type { WeightEntry } from '../../shared/types'
-import type { CreateWeightPayload } from '../../shared/schemas'
+import type { WeightEntry } from '#shared/types'
+import type { CreateWeightPayload } from '#shared/schemas'
 import { weightRepository } from '../repositories/weightRepository'
 
 export const weightService = {

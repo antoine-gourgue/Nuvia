@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import type { User } from '../../shared/types'
+import type { User } from '#shared/types'
 import { userRepository } from '../repositories/userRepository'
 import { createToken } from '../utils/jwt'
 

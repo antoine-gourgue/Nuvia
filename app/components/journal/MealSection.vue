@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { Plus, Coffee, UtensilsCrossed, Soup, Cookie } from 'lucide-vue-next'
-import type { MealEntry, MealType } from '../../../shared/types'
+import type { MealEntry, MealType } from '#shared/types'
 
 interface Props {
   mealType: MealType
