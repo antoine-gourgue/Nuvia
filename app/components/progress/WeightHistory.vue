@@ -22,6 +22,7 @@
             </p>
           </div>
           <button
+            aria-label="Delete weight entry"
             class="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-red-50 hover:text-red-500"
             @click="emit('delete', entry.id)"
           >
