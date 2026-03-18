@@ -35,9 +35,17 @@
           :meal-type="mealType"
           :meals="journalStore.entriesByMealType[mealType]"
           @delete="handleDelete"
+          @add="openSheet"
         />
       </div>
     </template>
+
+    <JournalAddMealSheet
+      :open="isSheetOpen"
+      :default-meal-type="sheetMealType"
+      @close="isSheetOpen = false"
+      @saved="onMealSaved"
+    />
   </div>
 </template>
 
@@ -55,6 +63,9 @@ const dashboardStore = useDashboardStore()
 
 const mealTypes = MEAL_TYPES as readonly MealType[]
 
+const isSheetOpen = ref(false)
+const sheetMealType = ref<MealType>('lunch')
+
 onMounted(() => {
   void journalStore.fetchEntries()
 })
@@ -67,6 +78,15 @@ const formattedDate = computed(() => {
 function onDateChange(event: Event) {
   const target = event.target as HTMLInputElement
   journalStore.setDate(target.value)
+}
+
+function openSheet(mealType: MealType) {
+  sheetMealType.value = mealType
+  isSheetOpen.value = true
+}
+
+function onMealSaved() {
+  void journalStore.fetchEntries()
 }
 
 async function handleDelete(id: string) {

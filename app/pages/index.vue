@@ -20,7 +20,7 @@
           :fat-target="macroTargets.fat"
         />
 
-        <DashboardQuickActions />
+        <DashboardQuickActions @add-meal="isSheetOpen = true" />
       </div>
     </template>
 
@@ -34,6 +34,8 @@
         <UiUButton variant="soft" @click="dashboardStore.fetchSummary()"> Try again </UiUButton>
       </template>
     </UiUEmptyState>
+
+    <JournalAddMealSheet :open="isSheetOpen" @close="isSheetOpen = false" @saved="onMealSaved" />
   </div>
 </template>
 
@@ -46,9 +48,15 @@ definePageMeta({
 const dashboardStore = useDashboardStore()
 const authStore = useAuthStore()
 
+const isSheetOpen = ref(false)
+
 onMounted(() => {
   void dashboardStore.fetchSummary()
 })
+
+function onMealSaved() {
+  void dashboardStore.fetchSummary()
+}
 
 const greeting = computed(() => {
   const hour = new Date().getHours()

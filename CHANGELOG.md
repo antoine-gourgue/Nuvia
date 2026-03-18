@@ -8,15 +8,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [0.11.0] — 2026-03-18
 
+### Added
+
+- `UBottomSheet` component — mobile-first bottom sheet (slides up on mobile, centered dialog on desktop)
+- `AddMealSheet` component — add meal form as bottom sheet instead of separate page
+- Add meal sheet opens directly from journal meal sections and dashboard quick actions
+
 ### Changed
 
 - Journal page refactored with botanical design tokens
 - Error state replaced with `UEmptyState` component
 - Page header uses semantic tokens (`text-strong`, `text-muted`)
 - Date picker styled with `border-soft`, `surface-card`, primary focus ring
-- `MealSection`: icons and labels use `text-muted` / `text-strong`, dashed add button uses `border-soft`
+- `MealSection`: emits `add` event to open sheet instead of navigating to `/add`
 - `MealCard`: uses `surface-card`, `border-soft`, `surface-soft` hover, delete uses `error-bg` / `error-text`
 - Journal skeleton refined to match new layout with header and section structure
+- Dashboard "Add meal" opens sheet directly without page navigation
+
+### Removed
+
+- `add.vue` page — replaced by `AddMealSheet` bottom sheet
 
 ---
 

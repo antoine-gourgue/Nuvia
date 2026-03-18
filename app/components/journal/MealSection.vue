@@ -19,14 +19,13 @@
 
     <p v-else class="py-3 text-center text-sm text-text-muted">No meals logged yet.</p>
 
-    <NuxtLink :to="`/add?mealType=${props.mealType}`">
-      <button
-        class="flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-border-soft py-2.5 text-sm text-text-muted transition-colors hover:border-primary-300 hover:text-primary-600"
-      >
-        <Plus :size="16" />
-        Add {{ label.toLowerCase() }}
-      </button>
-    </NuxtLink>
+    <button
+      class="flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-border-soft py-2.5 text-sm text-text-muted transition-colors hover:border-primary-300 hover:text-primary-600"
+      @click="emit('add', props.mealType)"
+    >
+      <Plus :size="16" />
+      Add {{ label.toLowerCase() }}
+    </button>
   </div>
 </template>
 
@@ -40,7 +39,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits<{ delete: [id: string] }>()
+const emit = defineEmits<{ delete: [id: string]; add: [mealType: MealType] }>()
 
 const labelMap: Record<MealType, string> = {
   breakfast: 'Breakfast',
