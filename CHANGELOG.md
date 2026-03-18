@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ---
 
+## [0.11.0] — 2026-03-18
+
+### Changed
+
+- Journal page refactored with botanical design tokens
+- Error state replaced with `UEmptyState` component
+- Page header uses semantic tokens (`text-strong`, `text-muted`)
+- Date picker styled with `border-soft`, `surface-card`, primary focus ring
+- `MealSection`: icons and labels use `text-muted` / `text-strong`, dashed add button uses `border-soft`
+- `MealCard`: uses `surface-card`, `border-soft`, `surface-soft` hover, delete uses `error-bg` / `error-text`
+- Journal skeleton refined to match new layout with header and section structure
+
+---
+
 ## [0.10.0] — 2026-03-18
 
 ### Changed

@@ -1,21 +1,21 @@
 <template>
   <div
-    class="flex items-center justify-between rounded-xl border border-surface-100 bg-white p-3 transition-colors hover:bg-surface-50"
+    class="flex items-center justify-between rounded-xl border border-border-soft bg-surface-card p-3 transition-colors hover:bg-surface-soft"
   >
     <div class="min-w-0 flex-1">
-      <p class="truncate font-medium text-surface-900">{{ props.meal.name }}</p>
-      <p class="text-sm text-surface-500">
+      <p class="truncate font-medium text-text-strong">{{ props.meal.name }}</p>
+      <p class="text-sm text-text-muted">
         {{ props.meal.calories }} kcal · {{ props.meal.servingGrams }}g
       </p>
     </div>
     <div class="flex items-center gap-3">
-      <div class="hidden text-right text-xs text-surface-400 sm:block">
+      <div class="hidden text-right text-xs text-text-muted sm:block">
         <p>P {{ Math.round(props.meal.protein) }}g</p>
         <p>C {{ Math.round(props.meal.carbs) }}g · F {{ Math.round(props.meal.fat) }}g</p>
       </div>
       <button
         aria-label="Delete meal"
-        class="rounded-lg p-1.5 text-surface-400 transition-colors hover:bg-red-50 hover:text-red-500"
+        class="rounded-lg p-1.5 text-text-muted transition-colors hover:bg-error-bg hover:text-error-text"
         @click="emit('delete', props.meal.id)"
       >
         <Trash2 :size="16" />
