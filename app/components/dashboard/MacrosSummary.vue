@@ -1,7 +1,7 @@
 <template>
   <UiUCard>
-    <div class="space-y-3">
-      <h2 class="text-sm font-semibold text-surface-700">Macros</h2>
+    <div class="space-y-4">
+      <h2 class="text-sm font-semibold text-text-strong">Macros</h2>
       <div class="grid grid-cols-3 gap-4">
         <div v-for="macro in macros" :key="macro.label" class="text-center">
           <div class="relative mx-auto mb-2 h-14 w-14">
@@ -12,7 +12,7 @@
                 r="42"
                 fill="none"
                 stroke-width="10"
-                class="stroke-surface-100"
+                class="stroke-surface-soft"
               />
               <circle
                 cx="50"
@@ -28,13 +28,13 @@
               />
             </svg>
             <span
-              class="absolute inset-0 flex items-center justify-center text-xs font-bold text-surface-900"
+              class="absolute inset-0 flex items-center justify-center text-xs font-bold text-text-strong"
             >
               {{ macro.value }}g
             </span>
           </div>
-          <p class="text-xs font-medium text-surface-700">{{ macro.label }}</p>
-          <p class="text-xs text-surface-400">/ {{ macro.target }}g</p>
+          <p class="text-xs font-medium text-text-default">{{ macro.label }}</p>
+          <p class="text-xs text-text-muted">/ {{ macro.target }}g</p>
         </div>
       </div>
     </div>
@@ -66,19 +66,19 @@ const macros = computed(() => [
     label: 'Protein',
     value: Math.round(props.protein),
     target: props.proteinTarget,
-    colorClass: 'stroke-blue-500',
+    colorClass: 'stroke-primary-500',
   },
   {
     label: 'Carbs',
     value: Math.round(props.carbs),
     target: props.carbsTarget,
-    colorClass: 'stroke-amber-500',
+    colorClass: 'stroke-lime-500',
   },
   {
     label: 'Fat',
     value: Math.round(props.fat),
     target: props.fatTarget,
-    colorClass: 'stroke-red-500',
+    colorClass: 'stroke-coral-500',
   },
 ])
 </script>

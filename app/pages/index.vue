@@ -1,36 +1,39 @@
 <template>
-  <div class="mx-auto w-full max-w-2xl space-y-6 px-4 py-8">
+  <div class="mx-auto w-full max-w-2xl px-4 py-8">
     <DashboardDashboardSkeleton v-if="dashboardStore.status === 'loading'" />
 
     <template v-else-if="dashboardStore.summary">
-      <div>
-        <h1 class="text-2xl font-bold tracking-tight text-surface-900">{{ greeting }}</h1>
-        <p class="mt-1 text-surface-500">{{ motivationalMessage }}</p>
+      <UiUPageHeader :title="greeting" :subtitle="motivationalMessage" />
+
+      <div class="space-y-5">
+        <DashboardCalorieSummary
+          :target="dashboardStore.summary.targetCalories"
+          :consumed="dashboardStore.summary.consumedCalories"
+        />
+
+        <DashboardMacrosSummary
+          :protein="dashboardStore.summary.macros.protein"
+          :carbs="dashboardStore.summary.macros.carbs"
+          :fat="dashboardStore.summary.macros.fat"
+          :protein-target="macroTargets.protein"
+          :carbs-target="macroTargets.carbs"
+          :fat-target="macroTargets.fat"
+        />
+
+        <DashboardQuickActions />
       </div>
-
-      <DashboardCalorieSummary
-        :target="dashboardStore.summary.targetCalories"
-        :consumed="dashboardStore.summary.consumedCalories"
-      />
-
-      <DashboardMacrosSummary
-        :protein="dashboardStore.summary.macros.protein"
-        :carbs="dashboardStore.summary.macros.carbs"
-        :fat="dashboardStore.summary.macros.fat"
-        :protein-target="macroTargets.protein"
-        :carbs-target="macroTargets.carbs"
-        :fat-target="macroTargets.fat"
-      />
-
-      <DashboardQuickActions />
     </template>
 
-    <div v-else-if="dashboardStore.status === 'error'" class="py-12 text-center">
-      <p class="text-surface-500">{{ dashboardStore.errorMessage }}</p>
-      <UiUButton variant="secondary" class="mt-4" @click="dashboardStore.fetchSummary()">
-        Try again
-      </UiUButton>
-    </div>
+    <UiUEmptyState
+      v-else-if="dashboardStore.status === 'error'"
+      title="Something went wrong"
+      :description="dashboardStore.errorMessage ?? 'We couldn\'t load your dashboard.'"
+      icon="⚠️"
+    >
+      <template #action>
+        <UiUButton variant="soft" @click="dashboardStore.fetchSummary()"> Try again </UiUButton>
+      </template>
+    </UiUEmptyState>
   </div>
 </template>
 
