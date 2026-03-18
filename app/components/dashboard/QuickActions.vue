@@ -7,7 +7,7 @@
       </UiUButton>
     </NuxtLink>
     <NuxtLink to="/journal" class="flex-1">
-      <UiUButton variant="secondary" class="w-full" size="lg">
+      <UiUButton variant="soft" class="w-full" size="lg">
         <BookOpen :size="18" />
         Journal
       </UiUButton>
