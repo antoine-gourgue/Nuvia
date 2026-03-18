@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { GoalType, ActivityLevel, BiologicalSex } from '../../shared/types'
+import type { GoalType, ActivityLevel, BiologicalSex } from '#shared/types'
 
 export type OnboardingStep = 'welcome' | 'goal' | 'body' | 'activity' | 'target' | 'done'
 
@@ -56,15 +56,17 @@ export const useOnboardingStore = defineStore('onboarding', {
   actions: {
     nextStep() {
       const index = STEPS.indexOf(this.currentStep)
-      if (index < STEPS.length - 1) {
-        this.currentStep = STEPS[index + 1]
+      const next = STEPS[index + 1]
+      if (next) {
+        this.currentStep = next
       }
     },
 
     previousStep() {
       const index = STEPS.indexOf(this.currentStep)
-      if (index > 0) {
-        this.currentStep = STEPS[index - 1]
+      const prev = STEPS[index - 1]
+      if (prev) {
+        this.currentStep = prev
       }
     },
 

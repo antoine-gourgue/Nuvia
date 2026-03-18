@@ -1,4 +1,4 @@
-import { createMealSchema } from '../../../shared/schemas'
+import { createMealSchema } from '#shared/schemas'
 import { mealService } from '../../services/mealService'
 
 export default defineEventHandler(async (event) => {

@@ -11,7 +11,6 @@ const entries: WeightEntry[] = [
     entryDate: '2026-03-01',
     note: null,
     createdAt: '2026-03-01T08:00:00Z',
-    updatedAt: '2026-03-01T08:00:00Z',
   },
   {
     id: 'w2',
@@ -20,7 +19,6 @@ const entries: WeightEntry[] = [
     entryDate: '2026-03-10',
     note: 'Morning',
     createdAt: '2026-03-10T08:00:00Z',
-    updatedAt: '2026-03-10T08:00:00Z',
   },
   {
     id: 'w3',
@@ -29,7 +27,6 @@ const entries: WeightEntry[] = [
     entryDate: '2026-03-18',
     note: null,
     createdAt: '2026-03-18T08:00:00Z',
-    updatedAt: '2026-03-18T08:00:00Z',
   },
 ]
 

@@ -1,4 +1,4 @@
-import { registerSchema } from '../../../shared/schemas'
+import { registerSchema } from '#shared/schemas'
 import { authService } from '../../services/authService'
 
 export default defineEventHandler(async (event) => {

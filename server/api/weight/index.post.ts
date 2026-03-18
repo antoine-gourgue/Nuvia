@@ -1,4 +1,4 @@
-import { createWeightSchema } from '../../../shared/schemas'
+import { createWeightSchema } from '#shared/schemas'
 import { weightService } from '../../services/weightService'
 
 export default defineEventHandler(async (event) => {

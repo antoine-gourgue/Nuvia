@@ -1,4 +1,4 @@
-import { createUserProfileSchema } from '../../../shared/schemas'
+import { createUserProfileSchema } from '#shared/schemas'
 import { userService } from '../../services/userService'
 
 export default defineEventHandler(async (event) => {

@@ -1,5 +1,5 @@
-import type { ApiResult, UserProfile } from '../../shared/types'
-import { calculateBMR, calculateTDEE } from '../../shared/utils/nutrition'
+import type { ApiResult, UserProfile } from '#shared/types'
+import { calculateBMR, calculateTDEE } from '#shared/utils/nutrition'
 
 export function useOnboarding() {
   const onboardingStore = useOnboardingStore()

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { WeightEntry, RequestStatus } from '../../shared/types'
+import type { WeightEntry, RequestStatus } from '#shared/types'
 
 interface WeightState {
   entries: WeightEntry[]
@@ -26,13 +26,16 @@ export const useWeightStore = defineStore('weight', {
       const sorted = [...state.entries].sort(
         (a, b) => new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime(),
       )
-      return sorted[0].weightKg
+      return sorted[0]?.weightKg ?? null
     },
 
     weightChange(): number | null {
       const sorted = this.sortedEntries
       if (sorted.length < 2) return null
-      return sorted[sorted.length - 1].weightKg - sorted[0].weightKg
+      const first = sorted[0]
+      const last = sorted.at(-1)
+      if (!first || !last) return null
+      return last.weightKg - first.weightKg
     },
   },
 

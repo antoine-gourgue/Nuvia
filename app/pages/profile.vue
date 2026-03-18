@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import type { GoalType, ActivityLevel, BiologicalSex } from '../../shared/types'
+import type { GoalType, ActivityLevel, BiologicalSex } from '#shared/types'
 
 definePageMeta({
   layout: 'app',

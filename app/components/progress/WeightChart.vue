@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import type { WeightEntry } from '../../../shared/types'
+import type { WeightEntry } from '#shared/types'
 
 interface Props {
   entries: WeightEntry[]
@@ -117,7 +117,8 @@ const linePath = computed(() => {
 const areaPath = computed(() => {
   if (points.value.length === 0) return ''
   const first = points.value[0]
-  const last = points.value[points.value.length - 1]
+  const last = points.value.at(-1)
+  if (!first || !last) return ''
   const bottom = height - padding
   return `M ${first.x} ${bottom} ${linePath.value} L ${last.x} ${bottom} Z`
 })

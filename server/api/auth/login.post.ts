@@ -1,4 +1,4 @@
-import { loginSchema } from '../../../shared/schemas'
+import { loginSchema } from '#shared/schemas'
 import { authService } from '../../services/authService'
 
 export default defineEventHandler(async (event) => {

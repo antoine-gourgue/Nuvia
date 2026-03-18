@@ -1,7 +1,7 @@
-import type { UserProfile } from '../../shared/types'
-import type { CreateUserProfilePayload, UpdateUserProfilePayload } from '../../shared/schemas'
+import type { UserProfile } from '#shared/types'
+import type { CreateUserProfilePayload, UpdateUserProfilePayload } from '#shared/schemas'
 import { userRepository } from '../repositories/userRepository'
-import { calculateBMR, calculateTDEE } from '../../shared/utils/nutrition'
+import { calculateBMR, calculateTDEE } from '#shared/utils/nutrition'
 
 function computeDailyTarget(data: CreateUserProfilePayload): number {
   const bmr = calculateBMR(data.weightKg, data.heightCm, data.age, data.biologicalSex)

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { TrendingDown, TrendingUp, Minus, Trophy } from 'lucide-vue-next'
-import type { GoalType } from '../../../shared/types'
+import type { GoalType } from '#shared/types'
 
 interface Props {
   change: number | null

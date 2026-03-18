@@ -1,4 +1,4 @@
-import type { ApiResult, User, UserProfile } from '../../shared/types'
+import type { ApiResult, User, UserProfile } from '#shared/types'
 
 interface AuthResponse {
   user: User

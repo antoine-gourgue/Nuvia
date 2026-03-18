@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { Trash2 } from 'lucide-vue-next'
-import type { WeightEntry } from '../../../shared/types'
+import type { WeightEntry } from '#shared/types'
 
 interface Props {
   entries: WeightEntry[]

@@ -40,8 +40,8 @@
 </template>
 
 <script setup lang="ts">
-import type { MealType } from '../../shared/types'
-import { MEAL_TYPES } from '../../shared/constants'
+import type { MealType } from '#shared/types'
+import { MEAL_TYPES } from '#shared/constants'
 
 definePageMeta({
   layout: 'app',
