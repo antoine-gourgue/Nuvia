@@ -1,0 +1,40 @@
+{
+  "name": "nuvia",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "nuxt typecheck",
+    "db:migrate": "node server/db/migrate.mjs"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.11.3",
+    "lucide-vue-next": "^0.509.0",
+    "nuxt": "^4.4.2",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.30",
+    "vue-router": "^5.0.3",
+    "zod": "^3.25.36"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.4.1",
+    "@nuxt/test-utils": "^3.18.0",
+    "@tailwindcss/vite": "^4.1.10",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.28.0",
+    "happy-dom": "^18.0.1",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.3",
+    "vue-tsc": "^3.2.6"
+  }
+}
