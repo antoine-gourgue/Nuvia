@@ -16,6 +16,7 @@ This document defines how TypeScript must be used in this project.
 - Model domain states precisely
 
 Good:
+
 ```ts
 function parseCalories(value: unknown): number | null {
   if (typeof value !== 'number' || Number.isNaN(value)) {
@@ -27,6 +28,7 @@ function parseCalories(value: unknown): number | null {
 ```
 
 Bad:
+
 ```ts
 function parseCalories(value: any): any {
   return value
@@ -38,6 +40,7 @@ function parseCalories(value: any): any {
 ## 2. When to Use `type`
 
 Use `type` for:
+
 - unions
 - intersections
 - aliases
@@ -48,14 +51,13 @@ Use `type` for:
 - finite UI states
 
 Good:
+
 ```ts
 export type GoalType = 'lose' | 'maintain' | 'gain'
 
 export type RequestStatus = 'idle' | 'loading' | 'success' | 'error'
 
-export type ApiResult<T> =
-  | { success: true; data: T }
-  | { success: false; error: string }
+export type ApiResult<T> = { success: true; data: T } | { success: false; error: string }
 
 export type MealFormPayload = {
   name: string
@@ -67,6 +69,7 @@ export type MealFormPayload = {
 ```
 
 Bad:
+
 ```ts
 export interface GoalType {
   value: string
@@ -80,11 +83,13 @@ export interface RequestStatus {
 ## 3. When to Use `interface`
 
 Use `interface` for:
+
 - extensible object contracts
 - domain entities
 - public object contracts intended for extension or implementation
 
 Good:
+
 ```ts
 export interface UserProfile {
   id: string
@@ -110,6 +115,7 @@ export interface FoodItem {
 All public functions must be fully typed.
 
 Good:
+
 ```ts
 export function calculateRemainingCalories(target: number, consumed: number): number {
   return Math.max(target - consumed, 0)
@@ -117,6 +123,7 @@ export function calculateRemainingCalories(target: number, consumed: number): nu
 ```
 
 Bad:
+
 ```ts
 export function calculateRemainingCalories(target, consumed) {
   return target - consumed
@@ -128,6 +135,7 @@ export function calculateRemainingCalories(target, consumed) {
 Use discriminated unions for API result typing.
 
 Good:
+
 ```ts
 export type ApiSuccess<T> = {
   success: true

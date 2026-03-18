@@ -4,17 +4,12 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: [
-    '@pinia/nuxt',
-    '@nuxt/eslint',
-  ],
+  modules: ['@pinia/nuxt', '@nuxt/eslint'],
 
   css: ['~/assets/css/main.css'],
 
   vite: {
-    plugins: [
-      import('@tailwindcss/vite').then((m) => m.default()),
-    ],
+    plugins: [import('@tailwindcss/vite').then((m) => m.default())],
   },
 
   typescript: {
@@ -28,7 +23,7 @@ export default defineNuxtConfig({
 
   eslint: {
     config: {
-      standalone: false,
+      standalone: true,
     },
   },
 })

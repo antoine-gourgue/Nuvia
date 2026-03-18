@@ -21,6 +21,7 @@ This project must be developed feature by feature with clear versioning discipli
 ## 2. Branch Naming
 
 Use:
+
 - `feature/<name>`
 - `fix/<name>`
 - `refactor/<name>`
@@ -30,12 +31,14 @@ Use:
 - `ci/<name>`
 
 Good examples:
+
 - `feature/onboarding-goal-step`
 - `feature/daily-calorie-dashboard`
 - `fix/remaining-calories-rounding`
 - `refactor/extract-meal-form-composable`
 
 Bad examples:
+
 - `update`
 - `branch1`
 - `antoine`
@@ -49,6 +52,7 @@ Bad examples:
 Every finished feature should result in a clear commit.
 
 Use Conventional Commits:
+
 - `feat:`
 - `fix:`
 - `refactor:`
@@ -58,6 +62,7 @@ Use Conventional Commits:
 - `ci:`
 
 Good examples:
+
 - `feat: add onboarding goal selection step`
 - `feat: create daily calorie summary card`
 - `fix: correct remaining calories calculation`
@@ -65,6 +70,7 @@ Good examples:
 - `test: add regression tests for meal total calculation`
 
 Bad examples:
+
 - `update`
 - `fix bug`
 - `stuff`
@@ -76,6 +82,7 @@ Bad examples:
 ## 4. Definition of Done Before Commit
 
 A feature is considered ready to commit only if:
+
 - the main scope is implemented
 - the code follows project architecture
 - the code is typed correctly
@@ -90,14 +97,17 @@ A feature is considered ready to commit only if:
 ## 5. Claude Behavior Expectations
 
 When Claude finishes a feature, it should provide:
+
 1. a short summary of what was completed
 2. the suggested branch name
 3. the suggested commit message
 4. any migration/test notes if relevant
 
 Expected output example:
+
 ```md
 Completed:
+
 - added onboarding goal step UI
 - connected it to onboarding store
 - added validation for selected goal
@@ -114,22 +124,26 @@ Suggested commit:
 ## 6. If the Work Is Not Finished
 
 If the feature is only partially implemented:
+
 - Claude must say so clearly
 - Claude must not pretend the feature is complete
 - Claude may suggest a partial commit only if it is still coherent and useful
 
 Good:
+
 - `feat: add meal form UI skeleton`
 
 Bad:
+
 - `feat: complete meal feature`
-when backend, validation and tests are still missing
+  when backend, validation and tests are still missing
 
 ---
 
 ## 7. PR Expectations
 
 When a feature is ready for PR, include:
+
 - purpose
 - scope
 - screenshots if UI changed
@@ -137,19 +151,24 @@ When a feature is ready for PR, include:
 - migration notes if relevant
 
 Good PR summary:
+
 ```md
 ## Purpose
+
 Add the onboarding goal step.
 
 ## Scope
+
 - add UI
 - connect Pinia store
 - add tests
 
 ## Tests
+
 - unit tests added for onboarding store
 
 ## Notes
+
 No DB changes
 ```
 
@@ -158,6 +177,7 @@ No DB changes
 ## 8. Anti-Patterns
 
 Avoid:
+
 - giant mixed commits
 - unclear commit messages
 - many unrelated fixes in one feature commit

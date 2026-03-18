@@ -3,6 +3,7 @@
 This project uses Nuxt 4, Vue 3, Composition API, Tailwind CSS and Pinia.
 
 ## 1. Core Principles
+
 - Use Composition API only
 - Use `<script setup lang="ts">`
 - Keep pages thin
@@ -13,13 +14,16 @@ This project uses Nuxt 4, Vue 3, Composition API, Tailwind CSS and Pinia.
 - Prioritize mobile experience
 
 ## 2. Page Responsibilities
+
 A page should:
+
 - orchestrate a screen
 - call composables or stores
 - pass data to components
 - react to route-level concerns
 
 Good:
+
 ```vue
 <script setup lang="ts">
 const journalStore = useJournalStore()
@@ -39,6 +43,7 @@ onMounted(() => {
 ```
 
 Bad:
+
 ```vue
 <script setup lang="ts">
 const entries = ref([])
@@ -51,16 +56,21 @@ onMounted(async () => {
 ```
 
 ## 3. Component Responsibilities
+
 - render data
 - expose typed props
 - emit typed events
 - stay focused on one concern
 
 ## 4. Composables
+
 Good:
+
 ```ts
 export function useRemainingCalories(targetCalories: Ref<number>, consumedCalories: Ref<number>) {
-  const remainingCalories = computed(() => Math.max(targetCalories.value - consumedCalories.value, 0))
+  const remainingCalories = computed(() =>
+    Math.max(targetCalories.value - consumedCalories.value, 0),
+  )
 
   return {
     remainingCalories,
@@ -69,7 +79,9 @@ export function useRemainingCalories(targetCalories: Ref<number>, consumedCalori
 ```
 
 ## 5. Pinia Stores
+
 Good:
+
 ```ts
 export const useJournalStore = defineStore('journal', {
   state: () => ({

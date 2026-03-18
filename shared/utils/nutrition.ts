@@ -19,9 +19,9 @@ export function calculateTotalMacros(entries: ReadonlyArray<Macros>): Macros {
 
 export function calculateCaloriesFromMacros(protein: number, carbs: number, fat: number): number {
   return Math.round(
-    protein * CALORIES_PER_GRAM.protein
-    + carbs * CALORIES_PER_GRAM.carbs
-    + fat * CALORIES_PER_GRAM.fat,
+    protein * CALORIES_PER_GRAM.protein +
+      carbs * CALORIES_PER_GRAM.carbs +
+      fat * CALORIES_PER_GRAM.fat,
   )
 }
 

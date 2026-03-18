@@ -1,6 +1,7 @@
 # Project Architecture
 
 ## 1. Recommended Structure
+
 ```txt
 components/
   ui/
@@ -36,5 +37,6 @@ tests/
 ```
 
 ## 2. Good Separation
+
 - handler -> service -> repository
 - shared types and schemas reused front/backend

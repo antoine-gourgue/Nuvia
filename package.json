@@ -14,7 +14,19 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "nuxt typecheck",
-    "db:migrate": "node server/db/migrate.mjs"
+    "db:migrate": "node server/db/migrate.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@pinia/nuxt": "^0.11.3",
@@ -31,7 +43,12 @@
     "@tailwindcss/vite": "^4.1.10",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "happy-dom": "^18.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3",
     "vitest": "^3.2.3",

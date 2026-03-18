@@ -6,6 +6,7 @@
 - derive user identity from auth/session, not request payload
 
 Bad:
+
 ```ts
 const secret = 'my-secret'
 ```

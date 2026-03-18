@@ -1,6 +1,7 @@
 # Testing Standards
 
 ## 1. Core Principles
+
 - tests must be readable
 - tests must be deterministic
 - tests must verify behavior
@@ -8,6 +9,7 @@
 - a bug fix should include a regression test when relevant
 
 ## 2. Good Test Example
+
 ```ts
 import { describe, expect, it } from 'vitest'
 import { calculateRemainingCalories } from '~/shared/utils/nutrition'
