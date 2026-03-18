@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ---
 
+## [0.10.0] — 2026-03-18
+
+### Changed
+
+- Dashboard page refactored with botanical design tokens
+- Calorie ring uses `stroke-surface-soft` track and `stroke-primary-500` / `stroke-coral-500` fill
+- Macro rings use botanical accents: primary (protein), lime (carbs), coral (fat)
+- All text uses semantic tokens (`text-strong`, `text-default`, `text-muted`)
+- Quick actions use `soft` button variant instead of `secondary`
+- Error state replaced with `UEmptyState` component
+- Page header replaced with `UPageHeader` component
+- Dashboard skeleton refined to match new card layout with section titles
+
+---
+
 ## [0.9.0] — 2026-03-18
 
 ### Changed
